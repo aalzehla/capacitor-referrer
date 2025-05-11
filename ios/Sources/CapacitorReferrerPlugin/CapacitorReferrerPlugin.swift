@@ -10,11 +10,11 @@ public class CapacitorReferrerPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "CapacitorReferrerPlugin"
     public let jsName = "CapacitorReferrer"
     public let pluginMethods: [CAPPluginMethod] = [
-        CAPPluginMethod(name: "echo", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "getReferrer", returnType: CAPPluginReturnPromise)
     ]
     private let implementation = CapacitorReferrer()
 
-    @objc func echo(_ call: CAPPluginCall) {
+    @objc func getReferrer(_ call: CAPPluginCall) {
         let value = call.getString("value") ?? ""
         call.resolve([
             "value": implementation.echo(value)
